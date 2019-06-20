@@ -1,5 +1,5 @@
 {
-    "name": "AndyFTP/laravel-users",
+    "name": "andyftp/laravel-users",
     "description": "Laravel Users Management Package",
     "keywords": ["laravel", "users", "management"],
     "license": "MIT",
