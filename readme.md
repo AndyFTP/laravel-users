@@ -4,6 +4,44 @@
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel-users/v/stable.svg)](https://packagist.org/packages/jeremykenedy/laravel-users)
 [![License](https://poser.pugx.org/jeremykenedy/laravel-users/license.svg)](https://packagist.org/packages/jeremykenedy/laravel-users)
 
+## Compatibility changes for 5.2
+
+I have updated this package to be compatible with Laravel 5.2 and added the admin middleware to be required to gain access to the user management pages.
+
+Here is a snippet for the admin middleware:
+```
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class Admin
+{
+
+    public function handle($request, Closure $next)
+    {
+        if(!$request->user()->hasRole('admin')){
+            return redirect('/'); //for unauthorized users
+        };
+
+        return $next($request);
+    }
+}
+```
+
+in `\App\Http\Kernell.php` add this:
+
+```
+    protected $routeMiddleware = [
+        
+        'admin' => \App\Http\Middleware\Admin::class
+        
+    ];
+```
+
+now make sure you are admin so u can access the user management pages.
+
 ## Introduction
 
 A Users Management [Package](https://packagist.org/packages/jeremykenedy/laravel-users) that includes all necessary routes, views, models, and controllers for a user management dashboard and associated pages for managing Laravels built in user scaffolding.

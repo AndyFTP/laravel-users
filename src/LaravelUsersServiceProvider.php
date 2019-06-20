@@ -2,7 +2,7 @@
 
 namespace jeremykenedy\laravelusers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class LaravelUsersServiceProvider extends ServiceProvider
 {
